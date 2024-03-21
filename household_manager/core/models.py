@@ -1,23 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Family(models.Model):
-    name = models.CharField(max_length=200)
-    created_by = models.ForeignKey(User, related_name='families', on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='static/images',null=True, blank=True)
-    
-    def __str__(self):
-        return self.name
 
 class Member(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=200,null=True)
-    phone = models.CharField(max_length=150, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
-    family = models.ForeignKey(Family, related_name='members', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    email = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=150, null=True)
     profile_pic = models.ImageField(upload_to='static/images',null=True, blank=True)
     
     def __str__(self) -> str:
+        return self.name
+    
+class Family(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    created_by = models.ForeignKey(User, related_name='families', on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='static/images', null=True, blank=True)
+    members = models.ForeignKey(Member, related_name='members', on_delete=models.CASCADE, null=True, blank=True)
+
+    
+    def __str__(self):
         return self.name
 
 class Chore(models.Model):
@@ -28,7 +30,7 @@ class Chore(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"{self.title} - Assigned to: {self.assigned_to.username}"
+        return f"{self.title} - Assigned to: {self.assigned_to.name}"
 
 class Expense(models.Model):
     CATEGORY_CHOICES = [
@@ -44,7 +46,7 @@ class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"{self.amount} - {self.description} - Paid by: {self.paid_by.username}"
+        return f"{self.amount} - {self.description} - Paid by: {self.created_by.username}"
 
 class Budget(models.Model):
     amount = models.DecimalField(max_digits=7, decimal_places=2)
@@ -56,7 +58,7 @@ class Budget(models.Model):
     
     
 class Notification(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notifications")
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="notifications", null=True)
     message = models.TextField()
     is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
