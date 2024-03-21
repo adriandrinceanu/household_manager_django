@@ -27,6 +27,7 @@ class MemberAdmin(admin.ModelAdmin):
             user = User.objects.create_user(username=username, password=password)
             obj.user = user
         obj.save()
+        
        
 admin.site.register(Member, MemberAdmin)    
 admin.site.register(Family)

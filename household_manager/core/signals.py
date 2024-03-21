@@ -8,6 +8,7 @@ def create_notification(sender, instance, created, **kwargs):
         Notification.objects.create(
             user=instance.assigned_to.user,
             message=f"You have been assigned a new chore: {instance.title}",
-            family=instance.assigned_to.family,
+            family=instance.assigned_to.family,  # this should now work
+            member=instance.assigned_to,
             chore=instance,
         )
