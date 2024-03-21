@@ -8,4 +8,6 @@ def create_chore(assigned_to, chore_title, family, chore_object):
         family=family,
         chore=chore_object,  # Link the notification to the chore object
     )
+    
+    return notification
     # Send notification email or implement chosen notification method here (To do)
