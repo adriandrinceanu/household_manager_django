@@ -12,66 +12,6 @@
   text-align: right;
 }
 
-.titlu{
-  color:#0866ff;
-  font-weight: bolder;
-}
-
-.titlu-mic{
-  color:#1c1e21;
-  font-weight:400;
-
-}
-
-/* Fonts */
-body {
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* Colors */
-body {
-    background-color: #f0f2f5;
-    font-family: 'Roboto', Arial, sans-serif;
-}
-
-.navbar {
-    background-color: #0866ff;
-}
-
-.nav-link, .navbar-brand {
-    color: #ffffff;
-}
-
-/* Shadows */
-.card {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Buttons */
-.bg-body-tertiary{
-  background-color: #0866ff !important;
-}
-.btn-primary {
-    background-color: #0866ff;
-    border-color: #0866ff;
-}
-
-.btn-primary:hover {
-    background-color: #166fe5;
-    border-color: #166fe5;
-}
-
-.btn-outline-primary {
-  background-color: #0866ff;
-  border-color: #fff;
-  color: #fff;
-}
-
-.btn-outline-primary:hover {
-  background-color: #a7c9ff;
-  border-color: #fff;
-}
 
 /* Inputs */
 .form-control {
