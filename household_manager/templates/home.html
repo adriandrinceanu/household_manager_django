@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main class=" w-100 m-auto">
+
+    <section class="py-5 text-center container">
+        <div class="video-background">
+          <div class="video-foreground">
+            <iframe src="https://www.youtube.com/embed/tpflPFyCIkY?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist=tpflPFyCIkY&start=25" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+           
+            
+            <div class="row py-lg-5">
+                <h1 class="fw-light">Adrian's Household Manager</h1>
+                <p>Some text here</p>
+                <br />
+                <div class="col-lg-4">
+                  <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/media/static/images/coman_andrei.jpeg" alt="Teacher">                  
+                  <h2 class="fw-normal">Teachers</h2>
+                  <p>Please login with the provided credentials as a teacher. The password is the same as the username.</p>
+                  <input type="text" value="coman_andrei" id="myInput" style="display: none;">
+                  <button class="btn btn-secondary" onclick="copyToClipboardTeacher()">Copy credentials &raquo;</button>
+                  
+
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                  <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/media/static/images/280402653_5480872945280312_3852524378866026897_n.jpg" alt="Student"> 
+                  <h2 class="fw-normal">Students</h2>
+                  <p>Students can chat with each other. You can test this by logging in with 2 users from different browsers.</p>
+                  <input type="text" value="drinceanu_adrian" id="myStudent1" style="display: none;">
+                  <button class="btn btn-secondary" onclick="copyToClipboardStudent1()">Copy Student1 &raquo;</button>
+
+                  <input type="text" value="popescu_gabriela" id="myStudent2" style="display: none;">
+                  <button class="btn btn-secondary" onclick="copyToClipboardStudent2()">Copy Student2 &raquo;</button>
+                </div><!-- /.col-lg-4 -->
+                
+              </div><!-- /.row -->
+
+              <div class="col-lg-6 col-md-8 mx-auto">
+              <a href="https://github.com/adriandrinceanu" target="_blank" class="btn btn-primary my-2">My GitHub</a>
+              <a href="{% url 'login' %}" class="btn btn-outline-primary my-2">Login</a>
+            </p>
+          </div>
+      </section>
+
+      
+    
+</main>
+
+<!-- The JavaScript function -->
+<script>
+    function copyToClipboardTeacher() {
+      /* Get the text field */
+      var copyText = document.getElementById("myInput");
+    
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+    
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+
+    function copyToClipboardStudent1() {
+      /* Get the text field */
+      var copyText = document.getElementById("myStudent1");
+    
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+    
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+
+    function copyToClipboardStudent2() {
+      /* Get the text field */
+      var copyText = document.getElementById("myStudent2");
+    
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+    
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+
+
+    function copyToClipboardParent() {
+      /* Get the text field */
+      var copyText = document.getElementById("myParent");
+    
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+    
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+
+    </script>
+
+  {% endblock %}
+
+
+
