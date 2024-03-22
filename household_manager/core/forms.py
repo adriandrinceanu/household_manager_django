@@ -17,16 +17,17 @@ def generate_unique_username_from_str(name):
         username = f"{name}_{counter}".lower()
     return username
 
-class MemberCreationForm(UserCreationForm):
+class MemberCreationForm(forms.ModelForm):
     phone = forms.CharField(max_length=150, required=True)
     profile_pic = forms.ImageField()
     role = forms.ModelChoiceField(queryset=Group.objects.all())
     name = forms.CharField(max_length=255, required=True)
     email = forms.EmailField(max_length=200, required=True)
 
-    class Meta(UserCreationForm.Meta):
+    class Meta:
         model = User
-        fields = ['phone', 'profile_pic', 'role', 'name', 'email'] 
+        fields = ['name', 'email', 'phone', 'role', 'profile_pic']
+        exclude = ('password1', 'password2', )
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
@@ -34,18 +35,20 @@ class MemberCreationForm(UserCreationForm):
             field.widget.attrs.update({'class': 'form-control'})
 
     def save(self, commit=True):
-        user = super().save(commit=False)
+        user = User()
         username = generate_unique_username_from_str(self.cleaned_data['name'])
         user.username = username
         user.set_password(username)
         user.save()
         user.groups.add(self.cleaned_data['role'])
+        role = 'FL' if self.cleaned_data['role'].name == 'Family Leader' else 'FM'
         member = Member.objects.create(
             user=user,
             name=self.cleaned_data['name'],
             email=self.cleaned_data['email'],
             phone=self.cleaned_data['phone'],
-            profile_pic=self.cleaned_data['profile_pic']
+            profile_pic=self.cleaned_data['profile_pic'],
+            role = role
         )
         if commit:
             member.save()
