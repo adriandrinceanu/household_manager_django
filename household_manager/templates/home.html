@@ -2,87 +2,38 @@
 {% load static %}
 {% block content %}
 
-<main class=" w-100 m-auto">
-
-    <section class="py-5 text-center container">
-        <div class="video-background">
-          <div class="video-foreground">
-            <iframe src="https://www.youtube.com/embed/tpflPFyCIkY?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist=tpflPFyCIkY&start=25" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-           
-            
-            <div class="row py-lg-5">
-                <h1 class="fw-light">Adrian's Household Manager</h1>
-                <p>Some text here</p>
-                <br />
-                <div class="col-6 py-lg-5">
-                  <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/media/static/images/coman_andrei.jpeg" alt="Teacher">                  
-                  <h2 class="fw-normal">Teachers</h2>
-                  <p>Please login with the provided credentials as a teacher. The password is the same as the username.</p>
-                  <input type="text" value="coman_andrei" id="myInput" style="display: none;">
-                  <button class="btn btn-secondary" onclick="copyToClipboardTeacher()">Copy credentials &raquo;</button>
-                </div><!-- /.col-6 -->
-
-                <div class="col-6 py-lg-5">
-                  <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/media/static/images/280402653_5480872945280312_3852524378866026897_n.jpg" alt="Student"> 
-                  <h2 class="fw-normal">Students</h2>
-                  <p>Students can chat with each other. You can test this by logging in with 2 users from different browsers.</p>
-                  <input type="text" value="drinceanu_adrian" id="myStudent1" style="display: none;">
-                  <button class="btn btn-secondary" onclick="copyToClipboardStudent1()">Copy Student1 &raquo;</button>
-
-                  <input type="text" value="popescu_gabriela" id="myStudent2" style="display: none;">
-                  <button class="btn btn-secondary" onclick="copyToClipboardStudent2()">Copy Student2 &raquo;</button>
-                </div><!-- /.col-6 -->
-                
-              </div><!-- /.row -->
-
-              <div class="col-lg-6 col-md-8 mx-auto">
-              <a href="https://github.com/adriandrinceanu" target="_blank" class="btn btn-primary my-2">My GitHub</a>
-              <a href="{% url 'login' %}" class="btn btn-outline-primary my-2">Login</a>
-            </p>
-          </div>
-      </section>
-
-      
-    
-</main>
-
-
 <main>
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
       <div class="col-md-6 p-lg-5 mx-auto my-5">
-        <h1 class="display-3 fw-bold">Designed for engineers</h1>
-        <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
+        <h1 class="display-3 fw-bold">Household manager</h1>
+        <h3 class="fw-normal text-muted mb-3 contrast-color">An app where Family members can be assigned with chores and manage the family budget.</h3>
         <div class="d-flex gap-3 justify-content-center lead fw-normal">
-          <a class="icon-link" href="#">
-            Learn more
-            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-          </a>
-          <a class="icon-link" href="#">
-            Buy
-            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-          </a>
+          <a href="https://github.com/adriandrinceanu" target="_blank" class="btn btn-primary my-2">My GitHub</a>
+          <a href="{% url 'login' %}" class="btn btn-outline-primary my-2">Login</a>
         </div>
       </div>
-      <div class="product-device shadow-sm d-none d-md-block"></div>
-      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+      <div class="product-device shadow-sm d-none d-md-block" style="background-image: url('media/images/family2.jpg');"></div>
+      <div class="product-device product-device-2 shadow-sm d-none d-md-block" style="background-image: url('media/images/chores2.jpg');"></div>
     </div>
   
     <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
       <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
         <div class="my-3 py-3">
-          <h2 class="display-5">Another headline</h2>
-          <p class="lead">And an even wittier subheading.</p>
+          <h2 class="display-5">Family manager</h2>
+          <p class="lead ">Please login with the provided credentials as a family manager. The password is the same as the username.</p>
+                  <input type="text" value="coman_andrei" id="myInput" style="display: none;">
+                  <button class="btn btn-secondary" onclick="copyToClipboardTeacher()">Copy credentials &raquo;</button>
         </div>
-        <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; background-image: url('media/images/family1.jpg');"></div>
       </div>
       <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
         <div class="my-3 p-3">
-          <h2 class="display-5">Another headline</h2>
-          <p class="lead">And an even wittier subheading.</p>
+          <h2 class="display-5">Family member</h2>
+          <p class="lead">Please login with the provided credentials as a family member. The password is the same as the username.</p>
+                  <input type="text" value="drinceanu_adrian" id="myStudent1" style="display: none;">
+                  <button class="btn btn-secondary" onclick="copyToClipboardStudent1()">Copy Student1 &raquo;</button>
         </div>
-        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; background-image: url('media/images/member2.jpg');"></div>
       </div>
     </div>
 

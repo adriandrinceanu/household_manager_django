@@ -2,25 +2,32 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Family(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    created_by = models.ForeignKey(User, related_name='families', on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='images', null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+
 class Member(models.Model):
+    ROLE_CHOICES = (
+        ('FL', 'Family Leader'),
+        ('FM', 'Family Member'),
+    )
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=255, null=True, blank=True)
     email = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=150, null=True)
     profile_pic = models.ImageField(upload_to='images',null=True, blank=True)
-    family = models.ForeignKey('Family', related_name='family_members', on_delete=models.CASCADE, null=True, blank=True)
+    family = models.ForeignKey(Family, related_name='family_members', on_delete=models.CASCADE, null=True, blank=True)
+    role = models.CharField(max_length=2, choices=ROLE_CHOICES, default='FM')
+    created_by = models.ForeignKey(User, related_name='created_members', on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self) -> str:
         return self.name
     
-class Family(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True)
-    created_by = models.ForeignKey(User, related_name='families', on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='images', null=True, blank=True)
-    members = models.ForeignKey(Member, related_name='members', on_delete=models.CASCADE, null=True, blank=True)
-    
-    def __str__(self):
-        return self.name
 
 class Chore(models.Model):
     title = models.CharField(max_length=255)
